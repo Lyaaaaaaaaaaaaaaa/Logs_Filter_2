@@ -1,0 +1,31 @@
+# CONTRIBUTING
+
+Thank you for considering contributing to my humble project! It's very kind. 
+However, be sure to read the code of conduit and guidelines before to contribute.
+*You can find them in the management folder.*
+
+## How to file a bug report?
+Go in **issues**, then click on **new issue** and select **bug report**
+
+## How to suggest a new feature?
+Go in **Discussions**. Any suggestion is welcome! Of course, everything isn't
+ possible, but giving your opinion or thought about improving this project is good.
+
+## How to set up your environment and run tests?
+You will need [Godot Engine](https://godotengine.org/download) installed.
+Then clone the repository and open it with Godot Engine.
+
+## The types of contributions I'm looking for
+I'm looking for contributions of any type. As long as you feel useful to
+contribute, do so! You can contribute by making some doc (Once the project is
+advanced enough to have need of a doc), help me with the UI, scripts, Github actions,
+giving some design advice or even suggestions.
+
+## How can you get in touch with me?
+You can start a discussion in the **discussions** tab or you can join my 
+[Discord server](https://discord.gg/hSey9Bv).
+If you are more old school you can send me an email at lyaaaaaaaaaaaaaaa@protonmail.com :).
+
+## Useful resources
+
+
