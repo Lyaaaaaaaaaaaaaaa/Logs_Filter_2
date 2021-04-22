@@ -1,0 +1,90 @@
+[gd_scene format=2]
+
+[node name="TopMenu" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuItems" type="HBoxContainer" parent="HBoxContainer"]
+margin_right = 333.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileButton" type="MenuButton" parent="HBoxContainer/MenuItems"]
+margin_right = 35.0
+margin_bottom = 28.0
+mouse_default_cursor_shape = 2
+text = "File"
+switch_on_hover = true
+
+[node name="HelpButton" type="MenuButton" parent="HBoxContainer/MenuItems"]
+margin_left = 39.0
+margin_right = 81.0
+margin_bottom = 28.0
+mouse_default_cursor_shape = 2
+text = "Help"
+switch_on_hover = true
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 337.0
+margin_right = 341.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopLabels" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 345.0
+margin_right = 678.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileName" type="Label" parent="HBoxContainer/TopLabels"]
+margin_left = 116.0
+margin_top = 7.0
+margin_right = 217.0
+margin_bottom = 21.0
+text = "No file selected"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 682.0
+margin_right = 686.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopRightLabels" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 690.0
+margin_right = 1024.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileLineNumber" type="Label" parent="HBoxContainer/TopRightLabels"]
+margin_left = 167.0
+margin_top = 7.0
+margin_right = 167.0
+margin_bottom = 21.0

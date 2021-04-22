@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Object",
+"class": "Parser",
+"language": "GDScript",
+"path": "res://src/classes/parser.gd"
+} ]
 _global_script_class_icons={
-
+"Parser": ""
 }
 
 [application]
