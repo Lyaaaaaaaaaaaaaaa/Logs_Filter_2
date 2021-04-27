@@ -11,8 +11,8 @@
 #--
 #--  - 27/04/2021 Lyaaaaa
 #--     - Added the variables and enum
-#--     - Implemented set_mode and set_filters
-#--     - Added the empty methods search_line and __set_regex.
+#--     - Implemented set_mode, set_filters, search_line
+#--     - Added the empty method __set_regex.
 #------------------------------------------------------------------------------
 extends Object
 class_name Parser
@@ -24,10 +24,26 @@ var filters := []
 var mode  : int = Mode.AND
 
 func search_line(p_line : String) -> bool:
-    return true
+    var result = Regex.search(p_line)
+
+    if result != null:
+        return true
+
+    else:
+        return false
 
 func __set_regex() -> void:
-    pass
+#    var expression := ""
+
+#    for filter in filters:
+ #       expression += filter
+  #      if mode == Mode.AND:
+
+
+   # elif mode == Mode.OR:
+    #    pass
+
+    Regex.compile("patate")
 
 func set_filters(p_filters : Array) -> void:
     filters = p_filters
