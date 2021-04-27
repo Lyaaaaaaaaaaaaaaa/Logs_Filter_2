@@ -1,7 +1,14 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/dialogs/file_dialog.gd" type="Script" id=1]
 
 [node name="FileDialog" type="FileDialog"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-window_title = "Enregistrer un fichier"
+window_title = "Ouvrir un fichier"
+resizable = true
+mode = 0
+access = 2
+current_dir = "/home/luis/Projets/Logs_Filter_2/Godot"
+current_path = "/home/luis/Projets/Logs_Filter_2/Godot/"
+script = ExtResource( 1 )
