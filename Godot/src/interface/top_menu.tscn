@@ -1,9 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/interface/top_menu.gd" type="Script" id=1]
 
 [node name="TopMenu" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -572.0
 size_flags_horizontal = 3
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,6 +34,7 @@ margin_right = 35.0
 margin_bottom = 28.0
 mouse_default_cursor_shape = 2
 text = "File"
+items = [ "Open file...", null, 0, false, false, 0, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="HelpButton" type="MenuButton" parent="HBoxContainer/MenuItems"]
@@ -38,6 +43,7 @@ margin_right = 81.0
 margin_bottom = 28.0
 mouse_default_cursor_shape = 2
 text = "Help"
+items = [ "About", null, 0, false, false, 0, 0, null, "", false, "Objet 1", null, 0, false, false, 1, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
@@ -58,7 +64,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FileName" type="Label" parent="HBoxContainer/TopLabels"]
+[node name="TopLabel" type="Label" parent="HBoxContainer/TopLabels"]
 margin_left = 116.0
 margin_top = 7.0
 margin_right = 217.0
@@ -83,7 +89,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FileLineNumber" type="Label" parent="HBoxContainer/TopRightLabels"]
+[node name="TopRightLabel" type="Label" parent="HBoxContainer/TopRightLabels"]
 margin_left = 167.0
 margin_top = 7.0
 margin_right = 167.0
