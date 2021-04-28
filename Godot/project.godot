@@ -42,7 +42,7 @@ Port=6008
 Default_Launch=0
 Run_All_Tests=Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"unicode":0,"echo":false,"script":null)
 
-Auto_Refresh_Tests=false
+Auto_Refresh_Tests=true
 Display=8
 
 [application]
