@@ -28,4 +28,6 @@ If you are more old school you can send me an email at lyaaaaaaaaaaaaaaa@protonm
 
 ## Useful resources
 
-
+- [Software_Architecture](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/software_architecture.png)
+- [Code rules](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/code_rules.md)
+- [Class diagram](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/class_diagram.png)

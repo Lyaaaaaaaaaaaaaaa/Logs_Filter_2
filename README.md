@@ -10,6 +10,6 @@ This project is a lightweight user-friendly software which filters logs. You giv
 It is more efficient and more readable for sizeable files. Ctrl+f is limited when you need a clear and readable output. Moreover, this project accepts multiple filters. Not everyone has knowledge in Linux/Windows terminal. The software comes with a simple interface usable by anyone.
 
 ## More information:
-[Code of conduit]()
+[Code of conduct](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CODE_OF_CONDUCT.md)
 
-[How to contribute]()
+[How to contribute](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CONTRIBUTING.md)
