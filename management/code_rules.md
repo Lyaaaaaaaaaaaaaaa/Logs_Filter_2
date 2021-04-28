@@ -22,7 +22,7 @@ Variables     : `variable_name`
 
 Parameters    : `p_parameter_name`
 
-Classes       : `Name_Name`
+Classes       : `name_name`
 
 Objects       : `Name_Name`
 
