@@ -36,7 +36,7 @@ Signals Handlers : `on_<NodeName>_action` *example: `on_AllyShip_fired`*
 
 ```
 #------------------------------------------------------------------------------
-#-- Copyright (c) 2020 Lyaaaaaaaaaaaaaaa
+#-- Copyright (c) 2021 Lyaaaaaaaaaaaaaaa
 #--
 #-- Author : xxx
 #--
