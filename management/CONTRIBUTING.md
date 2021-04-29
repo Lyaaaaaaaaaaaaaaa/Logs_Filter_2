@@ -16,9 +16,9 @@ You will need [Godot Engine](https://godotengine.org/download) installed.
 Then clone the repository and open it with Godot Engine.
 
 ## The types of contributions I'm looking for
-I'm looking for contributions of any type. As long as you feel useful to
+I **really need help designing the user interface** but as long as you feel useful to
 contribute, do so! You can contribute by making some doc (Once the project is
-advanced enough to have need of a doc), help me with the UI, scripts, Github actions,
+advanced enough to have need of a doc), scripts, Github actions, 
 giving some design advice or even suggestions.
 
 ## How can you get in touch with me?
