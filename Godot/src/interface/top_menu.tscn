@@ -43,7 +43,7 @@ margin_right = 81.0
 margin_bottom = 28.0
 mouse_default_cursor_shape = 2
 text = "Help"
-items = [ "About", null, 0, false, false, 0, 0, null, "", false, "Objet 1", null, 0, false, false, 1, 0, null, "", false ]
+items = [ "About", null, 0, false, false, 0, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
