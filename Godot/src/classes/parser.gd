@@ -24,7 +24,7 @@ enum Mode {AND = 0, OR = 1}
 
 var _Regex   := RegEx.new()
 var _filters := []
-var _mode    := Mode.AND
+var _mode : int = Mode.AND
 
 func search_line(p_line : String) -> bool:
     var result = _Regex.search(p_line)
