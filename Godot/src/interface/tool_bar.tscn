@@ -1,5 +1,61 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/interface/tool_bar.gd" type="Script" id=1]
 
 [node name="ToolBar" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -520.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 262.0
+margin_top = 20.0
+margin_right = 762.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_right = 41.0
+margin_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Start"
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 45.0
+margin_top = 13.0
+margin_right = 89.0
+margin_bottom = 27.0
+text = "Filters:"
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/HBoxContainer"]
+margin_left = 93.0
+margin_right = 293.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 0 )
+expand_to_text_length = true
+clear_button_enabled = true
+placeholder_text = "Example: error 19:40 ip"
+caret_blink = true
+
+[node name="SwitchModeButton" type="CheckButton" parent="CenterContainer/HBoxContainer"]
+margin_left = 297.0
+margin_right = 500.0
+margin_bottom = 40.0
+mouse_default_cursor_shape = 2
+pressed = true
+text = "Search for all filters"
