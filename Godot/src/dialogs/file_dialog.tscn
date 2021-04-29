@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://src/dialogs/file_dialog.gd" type="Script" id=1]
+[gd_scene format=2]
 
 [node name="FileDialog" type="FileDialog"]
 anchor_right = 1.0
@@ -9,6 +7,9 @@ window_title = "Ouvrir un fichier"
 resizable = true
 mode = 0
 access = 2
+filters = PoolStringArray( ".txt", ".text", ".log" )
 current_dir = "/home/luis/Projets/Logs_Filter_2/Godot"
 current_path = "/home/luis/Projets/Logs_Filter_2/Godot/"
-script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
