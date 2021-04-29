@@ -59,3 +59,5 @@ margin_bottom = 40.0
 mouse_default_cursor_shape = 2
 pressed = true
 text = "Search for all filters"
+[connection signal="pressed" from="CenterContainer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/SwitchModeButton" to="." method="_on_SwitchModeButton_pressed"]
