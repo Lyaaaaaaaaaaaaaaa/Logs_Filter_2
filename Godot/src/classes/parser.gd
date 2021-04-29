@@ -12,18 +12,22 @@
 #--  - 27/04/2021 Lyaaaaa
 #--     - Added the variables and enum
 #--     - Implemented set_mode, set_filters, search_line and __set_regex.
+#--
+#--  - 29/04/2021 Lyaaaaa
+#--     - Edited the order of the code to fit the style guide.
+#--     - Regex, filters and mode are now private variables.
 #------------------------------------------------------------------------------
-extends Object
 class_name Parser
+extends Object
 
 enum Mode {AND = 0, OR = 1}
 
-var Regex   := RegEx.new()
-var filters := []
-var mode  : int = Mode.AND
+var _Regex   := RegEx.new()
+var _filters := []
+var _mode    := Mode.AND
 
 func search_line(p_line : String) -> bool:
-    var result = Regex.search(p_line)
+    var result = _Regex.search(p_line)
 
     if result != null:
         return true
@@ -31,27 +35,26 @@ func search_line(p_line : String) -> bool:
     else:
         return false
 
-func __set_regex() -> void:
-    var expression : String
-
-    if mode == Mode.AND:
-        for i in filters.size():
-            expression += "(?=.*" + filters[i] + ")" # é != e with this regex.
-
-    elif mode == Mode.OR:
-        for i in filters.size():
-            expression += "(" + filters[i] + ")" # é == e with this regex.
-
-            if i < filters.size() - 1:
-                expression += "|"
-
-    Regex.compile(expression)
-
 func set_filters(p_filters : Array) -> void:
-    filters = p_filters
-    self.__set_regex()
+    _filters = p_filters
+    self._set_regex()
 
 func set_mode(p_mode : int) -> void:
-    mode = p_mode
-    self.__set_regex()
+    _mode = p_mode
+    self._set_regex()
 
+func _set_regex() -> void:
+    var expression : String
+
+    if _mode == Mode.AND:
+        for i in _filters.size():
+            expression += "(?=.*" + _filters[i] + ")" # é != e with this regex.
+
+    elif _mode == Mode.OR:
+        for i in _filters.size():
+            expression += "(" + _filters[i] + ")" # é == e with this regex.
+
+            if i < _filters.size() - 1:
+                expression += "|"
+
+    _Regex.compile(expression)
