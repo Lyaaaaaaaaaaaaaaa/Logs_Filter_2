@@ -16,6 +16,7 @@
 #--  - 29/04/2021 Lyaaaaa
 #--     - Edited the order of the code to fit the style guide.
 #--     - Regex, filters and mode are now private variables.
+#--     - Added switch_mode method.
 #------------------------------------------------------------------------------
 class_name Parser
 extends Object
@@ -35,13 +36,23 @@ func search_line(p_line : String) -> bool:
     else:
         return false
 
+
 func set_filters(p_filters : Array) -> void:
     _filters = p_filters
     self._set_regex()
 
+
 func set_mode(p_mode : int) -> void:
     _mode = p_mode
     self._set_regex()
+
+
+func switch_mode() -> void:
+    if _mode == Mode.AND:
+        set_mode(Mode.OR)
+    else:
+        set_mode(Mode.AND)
+
 
 func _set_regex() -> void:
     var expression : String
