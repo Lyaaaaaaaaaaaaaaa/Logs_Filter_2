@@ -9,7 +9,7 @@
 #--  - 29/04/2021 Lyaaaaa
 #--    - Created the file and implemented the signals handlers.
 #------------------------------------------------------------------------------
-extends PopupDialog
+extends WindowDialog
 
 
 func _on_WebSiteButton_pressed() -> void:
