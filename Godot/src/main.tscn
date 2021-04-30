@@ -58,5 +58,6 @@ visible = false
 [connection signal="about_button_pressed" from="Interface/TopMenu" to="." method="_on_TopMenu_about_button_pressed"]
 [connection signal="open_file_button_pressed" from="Interface/TopMenu" to="." method="_on_TopMenu_open_file_button_pressed"]
 [connection signal="start_button_pressed" from="Interface/ToolBar" to="." method="_on_ToolBar_start_button_pressed"]
+[connection signal="switch_case_sensitive_button_pressed" from="Interface/ToolBar" to="." method="_on_ToolBar_switch_case_sensitive_button_pressed"]
 [connection signal="switch_mode_button_pressed" from="Interface/ToolBar" to="." method="_on_ToolBar_switch_mode_button_pressed"]
 [connection signal="file_selected" from="Dialogs/FileDialog" to="." method="_on_FileDialog_file_selected"]
