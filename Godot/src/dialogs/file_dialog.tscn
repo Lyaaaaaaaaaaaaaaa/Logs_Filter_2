@@ -7,7 +7,6 @@ window_title = "Ouvrir un fichier"
 resizable = true
 mode = 0
 access = 2
-filters = PoolStringArray( ".txt", ".text", ".log" )
 current_dir = "/home/luis/Projets/Logs_Filter_2/Godot"
 current_path = "/home/luis/Projets/Logs_Filter_2/Godot/"
 __meta__ = {
