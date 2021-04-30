@@ -17,6 +17,14 @@
 #--     - Edited the order of the code to fit the style guide.
 #--     - Regex, filters and mode are now private variables.
 #--     - Added switch_mode method.
+#--
+#--  - 30/04/2021 Lyaaaaa
+#--     - Parser can now enable or disable case sensitivity of its regex.
+#--     - Added _case_sensitive var.
+#--     - Added switch_case_sensitivity method which set at true or false the
+#--         _case_sensitive var.
+#--     - Added _add_case_insensitivity method which adds the string to ignore
+#--         case sensitivity to the regex.
 #------------------------------------------------------------------------------
 class_name Parser
 extends Object
@@ -25,7 +33,9 @@ enum Mode {AND = 0, OR = 1}
 
 var _Regex   := RegEx.new()
 var _filters := []
-var _mode : int = Mode.AND
+
+var _mode           : int  = Mode.AND
+var _case_sensitive : bool = false
 
 func search_line(p_line : String) -> bool:
     var result = _Regex.search(p_line)
@@ -54,6 +64,13 @@ func switch_mode() -> void:
         set_mode(Mode.AND)
 
 
+func switch_case_sensitivity() -> void:
+    if _case_sensitive == false:
+        _case_sensitive = true
+    else:
+        _case_sensitive = false
+
+
 func _set_regex() -> void:
     var expression : String
 
@@ -68,4 +85,12 @@ func _set_regex() -> void:
             if i < _filters.size() - 1:
                 expression += "|"
 
+    if _case_sensitive == false:
+        expression = _add_case_insensitivity(expression)
+
     _Regex.compile(expression)
+
+
+func _add_case_insensitivity(p_expression : String) -> String:
+    p_expression = "(?i)" + p_expression
+    return p_expression
