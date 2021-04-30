@@ -29,6 +29,8 @@
 #--     - Added reset_counters method
 #--     - Updated _on_ToolBar_start_button_pressed to call reset_counters
 #--     - Added _on_ToolBar_switch_case_sensitive_button_pressed signal handler.
+#--     - Added var to store the nodes instead of using them with $path/node,
+#--         this will prevent errors if the main scene hierarchy is updated.
 #------------------------------------------------------------------------------
 extends Control
 
@@ -38,10 +40,17 @@ var file   := File.new()
 var matching_lines := 0
 var total_lines    := 0
 
+onready var top_menu       = find_node("TopMenu")
+onready var tool_bar       = find_node("ToolBar")
+onready var output_display = find_node("OutputDisplay")
+
+onready var about_dialog = find_node("AboutDialog")
+onready var file_dialog  = find_node("FileDialog")
+
 func search_file() -> void:
     var line : String
 
-    $Interface/ToolBar.disable_buttons()
+    tool_bar.disable_buttons()
     while file.eof_reached() == false:
         total_lines += 1
         line = file.get_line()
@@ -51,18 +60,18 @@ func search_file() -> void:
             display_line(line)
 
     display_stats()
-    $Interface/ToolBar.enable_buttons()
+    tool_bar.enable_buttons()
 
 
 func display_stats() -> void:
     var text : String
 
     text = String(matching_lines) + "/" + String(total_lines) + " matching lines"
-    $Interface/TopMenu.set_text_top_right_label(text)
+    top_menu.set_text_top_right_label(text)
 
 
 func display_line(p_line : String) -> void:
-    $Interface/OutputDisplay.append_text(p_line)
+    output_display.append_text(p_line)
 
 
 func reset_counters() -> void:
@@ -72,7 +81,7 @@ func reset_counters() -> void:
 
 func _on_ToolBar_start_button_pressed(p_filters : Array) -> void:
     reset_counters()
-    $Interface/OutputDisplay.clear()
+    output_display.clear()
     parser.set_filters(p_filters)
 
     file.seek(0)
@@ -88,15 +97,15 @@ func _on_ToolBar_switch_case_sensitive_button_pressed() -> void:
 
 
 func _on_FileDialog_file_selected(p_path : String) -> void:
-    $Interface/ToolBar.enable_buttons()
-    $Interface/TopMenu.set_text_top_label(p_path)
+    tool_bar.enable_buttons()
+    top_menu.set_text_top_label(p_path)
 
     file.open(p_path, File.READ)
 
 
 func _on_TopMenu_open_file_button_pressed() -> void:
-    $Dialogs/FileDialog.popup_centered()
+    file_dialog.popup_centered()
 
 
 func _on_TopMenu_about_button_pressed() -> void:
-    $Dialogs/AboutDialog.popup_centered()
+    about_dialog.popup_centered()
