@@ -19,9 +19,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_left = 262.0
+margin_left = 160.0
 margin_top = 20.0
-margin_right = 762.0
+margin_right = 864.0
 margin_bottom = 60.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -36,16 +36,22 @@ size_flags_vertical = 3
 disabled = true
 text = "Start"
 
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/HBoxContainer"]
 margin_left = 45.0
+margin_right = 55.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 59.0
 margin_top = 13.0
-margin_right = 89.0
+margin_right = 103.0
 margin_bottom = 27.0
 text = "Filters:"
 
 [node name="LineEdit" type="LineEdit" parent="CenterContainer/HBoxContainer"]
-margin_left = 93.0
-margin_right = 293.0
+margin_left = 107.0
+margin_right = 307.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
 expand_to_text_length = true
@@ -53,13 +59,27 @@ clear_button_enabled = true
 placeholder_text = "Example: error 19:40 ip"
 caret_blink = true
 
+[node name="VSeparator2" type="VSeparator" parent="CenterContainer/HBoxContainer"]
+margin_left = 311.0
+margin_right = 321.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+
 [node name="SwitchModeButton" type="CheckButton" parent="CenterContainer/HBoxContainer"]
-margin_left = 297.0
-margin_right = 500.0
+margin_left = 325.0
+margin_right = 528.0
 margin_bottom = 40.0
 mouse_default_cursor_shape = 2
 disabled = true
 pressed = true
 text = "Search for all filters"
+
+[node name="SwitchCaseSensitiveButton" type="CheckButton" parent="CenterContainer/HBoxContainer"]
+margin_left = 532.0
+margin_right = 704.0
+margin_bottom = 40.0
+disabled = true
+text = "Case sensitive"
 [connection signal="pressed" from="CenterContainer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/SwitchModeButton" to="." method="_on_SwitchModeButton_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/SwitchCaseSensitiveButton" to="." method="_on_SwitchCaseSensitiveButton_pressed"]
