@@ -27,6 +27,7 @@ margin_top = 20.0
 margin_right = 1004.0
 margin_bottom = 580.0
 focus_mode = 2
+custom_constants/line_separation = 7
 tab_size = 2
 selection_enabled = true
 __meta__ = {
