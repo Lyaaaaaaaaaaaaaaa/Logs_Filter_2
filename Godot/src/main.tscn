@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/interface/top_menu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/ui_design_tool/scenes/Toolbar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/interface/tool_bar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/main.gd" type="Script" id=3]
+[ext_resource path="res://src/interface/output_display.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/dialogs/about_dialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/dialogs/file_dialog.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -12,29 +15,63 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Interface" type="VBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
-custom_constants/separation = 27
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopMenu" parent="Interface" instance=ExtResource( 1 )]
+[node name="TopMenu" parent="VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
-margin_bottom = 0.0
+margin_bottom = 28.0
 
-[node name="Toolbar" parent="Interface" instance=ExtResource( 2 )]
-visible = false
-margin_top = 27.0
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 28.0
 margin_right = 1024.0
-margin_bottom = 51.0
+margin_bottom = 28.0
+custom_constants/separation = 0
+
+[node name="ToolBar" parent="VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 108.0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 108.0
+margin_right = 1024.0
+margin_bottom = 108.0
+custom_constants/separation = 0
+
+[node name="OutputDisplay" parent="VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 108.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Dialogs" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AboutDialog" parent="Dialogs" instance=ExtResource( 5 )]
+visible = false
+
+[node name="FileDialog" parent="Dialogs" instance=ExtResource( 6 )]
+[connection signal="about_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_about_button_pressed"]
+[connection signal="open_file_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_open_file_button_pressed"]
+[connection signal="start_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_start_button_pressed"]
+[connection signal="switch_case_sensitive_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_switch_case_sensitive_button_pressed"]
+[connection signal="switch_mode_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_switch_mode_button_pressed"]
+[connection signal="file_selected" from="Dialogs/FileDialog" to="." method="_on_FileDialog_file_selected"]

@@ -1,5 +1,127 @@
-[gd_scene format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/interface/tool_bar.gd" type="Script" id=1]
+
+[sub_resource type="InputEventAction" id=2]
+action = "ui_search"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="Theme" id=1]
+CheckButton/icons/normal = null
+CheckButton/styles/FilterCheckButton = null
+CheckButton/styles/normal = null
+
+[sub_resource type="InputEventAction" id=4]
+action = "ui_switch_mode"
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "ui_switch_case_sensitivity"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
 
 [node name="ToolBar" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -520.0
+rect_min_size = Vector2( 0, 80 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 80.0
+focus_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 135.0
+margin_top = 20.0
+margin_right = 888.0
+margin_bottom = 60.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_right = 54.0
+margin_bottom = 40.0
+grow_horizontal = 2
+hint_tooltip = "Shortcut: ENTER"
+disabled = true
+shortcut = SubResource( 3 )
+text = "Search"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 64.0
+margin_right = 74.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 84.0
+margin_top = 13.0
+margin_right = 128.0
+margin_bottom = 27.0
+text = "Filters:"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 138.0
+margin_right = 338.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 0 )
+hint_tooltip = "Type the words your are looking for here."
+expand_to_text_length = true
+clear_button_enabled = true
+placeholder_text = "Example: error 19:40 ip"
+caret_blink = true
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 348.0
+margin_right = 358.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+
+[node name="SwitchModeButton" type="CheckButton" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 368.0
+margin_right = 571.0
+margin_bottom = 40.0
+hint_tooltip = "Set to ON the software will only display the lines where all your filters appear.
+Set to OFF the software will display the lines where at least one of your filters appear.
+Shortcut: M"
+mouse_default_cursor_shape = 2
+theme = SubResource( 1 )
+disabled = true
+pressed = true
+shortcut = SubResource( 5 )
+text = "Search for all filters"
+
+[node name="SwitchCaseSensitiveButton" type="CheckButton" parent="MarginContainer/CenterContainer/HBoxContainer"]
+margin_left = 581.0
+margin_right = 753.0
+margin_bottom = 40.0
+hint_tooltip = "Shortcut: C"
+disabled = true
+shortcut = SubResource( 7 )
+text = "Case sensitive"
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/HBoxContainer/SwitchModeButton" to="." method="_on_SwitchModeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/HBoxContainer/SwitchCaseSensitiveButton" to="." method="_on_SwitchCaseSensitiveButton_pressed"]

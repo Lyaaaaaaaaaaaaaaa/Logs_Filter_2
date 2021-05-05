@@ -22,7 +22,7 @@ Variables     : `variable_name`
 
 Parameters    : `p_parameter_name`
 
-Classes       : `Name_Name`
+Classes       : `name_name`
 
 Objects       : `Name_Name`
 
@@ -36,7 +36,7 @@ Signals Handlers : `on_<NodeName>_action` *example: `on_AllyShip_fired`*
 
 ```
 #------------------------------------------------------------------------------
-#-- Copyright (c) 2020 Buchanan & Lyaaaaaaaaaaaaaaa
+#-- Copyright (c) 2021 Lyaaaaaaaaaaaaaaa
 #--
 #-- Author : xxx
 #--
@@ -46,6 +46,6 @@ Signals Handlers : `on_<NodeName>_action` *example: `on_AllyShip_fired`*
 #--  - 
 #-- Changelog:
 #--  - dd/mm/YYYY author
-#--       - [List changes here]
+#--    - [List changes here]
 #------------------------------------------------------------------------------
 ```
