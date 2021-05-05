@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/interface/top_menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/tool_bar.tscn" type="PackedScene" id=2]
@@ -7,9 +7,78 @@
 [ext_resource path="res://src/dialogs/about_dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/dialogs/file_dialog.tscn" type="PackedScene" id=6]
 
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.152941, 0.164706, 0.203922, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+border_width_right = 1
+border_color = Color( 0.870588, 0.866667, 0.854902, 1 )
+
+[sub_resource type="Theme" id=1]
+CheckButton/colors/font_color = Color( 0.870588, 0.866667, 0.854902, 1 )
+CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckButton/colors/font_color_hover = Color( 1, 1, 1, 1 )
+CheckButton/colors/font_color_hover_pressed = Color( 0.870588, 0.866667, 0.854902, 1 )
+CheckButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckButton/constants/check_vadjust = 0
+CheckButton/constants/hseparation = 4
+CheckButton/fonts/font = null
+CheckButton/icons/off = null
+CheckButton/icons/off_disabled = null
+CheckButton/icons/on = null
+CheckButton/icons/on_disabled = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+Label/colors/font_color = Color( 0.870588, 0.866667, 0.854902, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+MenuButton/colors/font_color = Color( 0.870588, 0.866667, 0.854902, 1 )
+MenuButton/colors/font_color_disabled = Color( 1, 1, 1, 0.3 )
+MenuButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+MenuButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+MenuButton/constants/hseparation = 3
+MenuButton/fonts/font = null
+MenuButton/styles/disabled = null
+MenuButton/styles/focus = null
+MenuButton/styles/hover = null
+MenuButton/styles/normal = null
+MenuButton/styles/pressed = null
+TooltipLabel/colors/font_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = null
+TooltipPanel/styles/panel = SubResource( 3 )
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = SubResource( 2 )
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -29,24 +98,12 @@ anchor_bottom = 0.0
 margin_right = 1024.0
 margin_bottom = 28.0
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 1024.0
-margin_bottom = 28.0
-custom_constants/separation = 0
-
 [node name="ToolBar" parent="VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 28.0
 margin_right = 1024.0
 margin_bottom = 108.0
-
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 108.0
-margin_right = 1024.0
-margin_bottom = 108.0
-custom_constants/separation = 0
 
 [node name="OutputDisplay" parent="VBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
@@ -69,6 +126,7 @@ __meta__ = {
 visible = false
 
 [node name="FileDialog" parent="Dialogs" instance=ExtResource( 6 )]
+
 [connection signal="about_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_about_button_pressed"]
 [connection signal="open_file_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_open_file_button_pressed"]
 [connection signal="start_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_start_button_pressed"]
