@@ -1,14 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/interface/tool_bar.gd" type="Script" id=1]
 
-[sub_resource type="InputEventAction" id=2]
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.141176, 0.156863, 0.164706, 1 )
+border_width_left = 1
+border_width_right = 1
+border_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="InputEventAction" id=1]
 action = "ui_search"
 
-[sub_resource type="ShortCut" id=3]
-shortcut = SubResource( 2 )
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=3]
 CheckButton/icons/normal = null
 CheckButton/styles/FilterCheckButton = null
 CheckButton/styles/normal = null
@@ -30,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -520.0
 rect_min_size = Vector2( 0, 80 )
+custom_styles/panel = SubResource( 8 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,8 +73,9 @@ margin_right = 54.0
 margin_bottom = 40.0
 grow_horizontal = 2
 hint_tooltip = "Shortcut: ENTER"
+mouse_default_cursor_shape = 2
 disabled = true
-shortcut = SubResource( 3 )
+shortcut = SubResource( 2 )
 text = "Search"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/CenterContainer/HBoxContainer"]
@@ -107,7 +116,7 @@ hint_tooltip = "Set to ON the software will only display the lines where all you
 Set to OFF the software will display the lines where at least one of your filters appear.
 Shortcut: M"
 mouse_default_cursor_shape = 2
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 disabled = true
 pressed = true
 shortcut = SubResource( 5 )
@@ -118,6 +127,7 @@ margin_left = 581.0
 margin_right = 753.0
 margin_bottom = 40.0
 hint_tooltip = "Shortcut: C"
+mouse_default_cursor_shape = 2
 disabled = true
 shortcut = SubResource( 7 )
 text = "Case sensitive"

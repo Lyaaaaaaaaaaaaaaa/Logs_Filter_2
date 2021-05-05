@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Godot Export
+name: Godot Export Test
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the Master branch
-  push:
-    branches: [ Master ]
   pull_request:
-    branches: [ Master ]
+    branches: 
+    - Master
+    - Develop
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
         with :
           fetch-depth : 0
         
-      - name : export game
+      - name : export game test
         uses : firebelley/godot-export@v2.8.0
         with :
           # Defining all the required inputs
@@ -33,8 +33,7 @@ jobs:
           relative_project_path               : ./Godot
           archive_export_output               : true
           base_version                        : 0.9.0
-          create_release                      : true
-          generate_release_notes              : true
+          create_release                      : false
           relative_export_path                : ./releases/
           #Set export_debug : true for test branches only
           export_debug                        : false
