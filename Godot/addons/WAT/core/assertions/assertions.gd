@@ -13,6 +13,7 @@ const StringX: Script = preload("string.gd")
 const Utility: Script = preload("utility.gd")
 const Property: Script = preload("property.gd")
 const ObjectX: Script = preload("object.gd")
+const Collections: Script = preload("collections.gd")
 signal asserted
 
 func output(data: Dictionary) -> void:
@@ -49,10 +50,10 @@ func is_not_in_range(value, low, high, context: String = "") -> void:
 	output(RangeX.is_not_in_range(value, low, high, context))
 
 func has(value, container, context: String = "") -> void:
-	output(Property.has.new(value, container, context))
+	output(Property.has(value, container, context))
 
 func does_not_have(value, container, context: String = "") -> void:
-	output(Property.does_not_have.new(value, container, context))
+	output(Property.does_not_have(value, container, context))
 
 func is_class_instance(instance, type, context: String = "") -> void:
 	output(Is.is_class_instance(instance, type, context))
@@ -155,6 +156,12 @@ func is_freed(obj: Object, context: String = "") -> void:
 
 func is_not_freed(obj: Object, context: String = "") -> void:
 	output(ObjectX.o_is_not_freed(obj, context))
+
+func is_empty(value, context: String = "") -> void:
+	if value is String:
+		output(StringX.is_empty(value, context))
+	else:
+		output(Collections.is_empty(value, context))
 
 func is_bool(value, context: String = "") -> void:
 		output(Is.is_bool(value, context))

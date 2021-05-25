@@ -8,9 +8,11 @@ const Log: Script = preload("res://addons/WAT/log.gd")
 const TestRunner: Script = preload("res://addons/WAT/core/test_runner/test_runner.gd")
 const Server: Script = preload("res://addons/WAT/network/server.gd")
 const XML: Script = preload("res://addons/WAT/editor/junit_xml.gd")
+const PluginAssetsRegistry: Script = preload("res://addons/WAT/ui/scripts/plugin_assets_registry.gd")
 onready var TestMenu: Button = $Core/Menu/TestMenu
 onready var Results: TabContainer = $Core/Results
 onready var Summary: HBoxContainer = $Core/Summary
+onready var Core: VBoxContainer = $Core
 var instance: TestRunner
 var server: Server
 signal launched_via_editor
@@ -19,6 +21,10 @@ signal function_selected
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_set_window_size()
+		# No argument makes the AssetsRegistry default to a scale of 1, which
+		# should make every icon look normal when the Tests UI launches
+		# outside of the editor.
+		_setup_editor_assets(PluginAssetsRegistry.new())
 	$Core.connect("test_strategy_set", self, "_on_test_strategy_set")
 	Results.connect("function_selected", self, "_on_function_selected")
 	
@@ -67,3 +73,7 @@ func _exit_tree() -> void:
 
 func _set_window_size() -> void:
 	OS.window_size = ProjectSettings.get_setting("WAT/Window_Size")
+
+# Loads scaled assets like icons and fonts
+func _setup_editor_assets(assets_registry):
+	Core._setup_editor_assets(assets_registry)

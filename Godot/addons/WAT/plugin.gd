@@ -7,9 +7,17 @@ const Title: String = "Tests"
 const Settings: Script = preload("res://addons/WAT/settings.gd")
 const GUI: PackedScene = preload("res://addons/WAT/gui.tscn")
 const Docker: Script = preload("res://addons/WAT/ui/scripts/docker.gd")
+const PluginAssetsRegistry: Script = preload("res://addons/WAT/ui/scripts/plugin_assets_registry.gd")
 var instance: Control
 var docker: Docker
 var script_editor: ScriptEditor
+var assets_registry = PluginAssetsRegistry.new(self)
+
+func _ready():
+	# Editor assets must be setup at ready time to give GUI scripts a chance to 
+	# ready themselves first and store references to other nodes, which will be 
+	# needed to call_setup_editor_assets() on.
+	instance._setup_editor_assets(assets_registry)
 
 func _enter_tree():
 	Settings.initialize()
@@ -38,14 +46,19 @@ func _exit_tree():
 	
 func _on_launched_via_editor() -> void:
 	var version = Engine.get_version_info()
-	if version.minor > 2:
+	if get_editor_interface().has_method("play_custom_scene"):
+		print("launch?")
 		get_editor_interface().play_custom_scene("res://addons/WAT/core/test_runner/TestRunner.tscn")
 	elif version.major == 3 and version.minor == 1:
+		print("branch 2")
 		get_editor_interface().open_scene_from_path("res://addons/WAT/core/test_runner/TestRunner.tscn")
 		get_editor_interface().get_parent()._menu_option(RUN_CURRENT_SCENE_GODOT_3_1)
 	elif version.major == 3 and version.minor == 2:
+		print("branch 3")
 		get_editor_interface().open_scene_from_path("res://addons/WAT/core/test_runner/TestRunner.tscn")
 		get_editor_interface().get_parent()._menu_option(RUN_CURRENT_SCENE_GODOT_3_2)
+	else:
+		print("branch 4")
 	make_bottom_panel_item_visible(instance)
 	
 func _on_function_selected(file: String, function: String) -> void:

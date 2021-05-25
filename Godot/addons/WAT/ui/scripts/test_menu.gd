@@ -2,6 +2,13 @@ extends Button
 tool
 
 enum { RUN_ALL, RUN_DIR, RUN_SCRIPT, RUN_TAG, RUN_METHOD, RUN_FAILURES }
+var FOLDER_ICON: Texture
+var FAILED_ICON: Texture
+var SCRIPT_ICON: Texture
+var PLAY_ICON: Texture
+var PLAY_DEBUG_ICON: Texture
+var LABEL_ICON: Texture
+var FUNCTION_ICON: Texture
 const TestGatherer: Script = preload("res://addons/WAT/editor/test_gatherer.gd")
 const ABOUT_TO_SHOW: String = "about_to_show"
 const IDX_PRESSED: String = "index_pressed"
@@ -47,6 +54,7 @@ func _on_idx_pressed(idx: int, menu: PopupMenu) -> void:
 	
 func select_tests(metadata: Dictionary) -> void:
 	var tests: Array = []
+	var run_in_editor: bool = false
 	match metadata.command:
 		RUN_ALL:
 			tests = test.all
@@ -73,7 +81,7 @@ func select_tests(metadata: Dictionary) -> void:
 					tests.append(container)
 			push_warning("RUN FAILURES NOT IMPLEMENTED")
 	clear()
-	emit_signal("_tests_selected", tests)
+	emit_signal("_tests_selected", tests, metadata.run_in_editor)
 	
 func set_last_run_success(results) -> void:
 	for result in results:
@@ -94,13 +102,21 @@ func _on_dirs_about_to_show() -> void:
 	Directories.clear()
 	Directories.set_as_minsize()
 	Directories.add_item("Run All")
-	Directories.set_item_icon(0, load("res://addons/WAT/assets/play.png"))
+	Directories.set_item_icon(0, PLAY_ICON)
+	Directories.add_item("Run With Debug")
+	Directories.set_item_icon(1, PLAY_DEBUG_ICON)
 	Directories.add_item("Rerun Failures")
-	Directories.set_item_icon(1, load("res://addons/WAT/assets/failed.png"))
+	Directories.set_item_icon(2, FAILED_ICON)
+	Directories.add_item("Rerun Failures With Debug")
+	Directories.set_item_icon(3, FAILED_ICON)
 	Directories.add_submenu_item("Tags", "Tags")
-	Directories.set_item_icon(2, load("res://addons/WAT/assets/label.png"))
-	Directories.set_item_metadata(0, {command = RUN_ALL})
-	Directories.set_item_metadata(1, {command = RUN_FAILURES})
+	Directories.set_item_icon(4, LABEL_ICON)
+	Directories.set_item_metadata(0, {command = RUN_ALL, run_in_editor = true})
+	Directories.set_item_metadata(1, {command = RUN_ALL, run_in_editor = false})
+	Directories.set_item_metadata(2, {command = RUN_FAILURES, run_in_editor = true})
+	Directories.set_item_metadata(3, {command = RUN_FAILURES, run_in_editor = false})
+	if not Engine.is_editor_hint():
+		Directories.set_item_disabled(1, true)
 	var dirs: Array = test.dirs
 	if dirs.empty():
 		return
@@ -113,7 +129,7 @@ func _on_dirs_about_to_show() -> void:
 			script.name = idx as String
 			Directories.add_child(script, true)
 			Directories.add_submenu_item(dir, idx as String, idx)
-			Directories.set_item_icon(idx, load("res://addons/WAT/assets/folder.png"))
+			Directories.set_item_icon(idx, FOLDER_ICON)
 			script.connect(ABOUT_TO_SHOW, self, "_on_scripts_about_to_show", [script])
 			idx += 1
 	
@@ -121,10 +137,18 @@ func _on_scripts_about_to_show(scripts) -> void:
 	refresh()
 	scripts.clear()
 	scripts.set_as_minsize()
+	
 	scripts.add_item("Run All")
 	var currentdir: String = Directories.get_item_text(scripts.name as int)
-	scripts.set_item_metadata(0, {command = RUN_DIR, path = currentdir})
-	scripts.set_item_icon(0,load("res://addons/WAT/assets/folder.png"))
+	scripts.set_item_metadata(0, {command = RUN_DIR, path = currentdir, run_in_editor = true})
+	scripts.set_item_icon(0,FOLDER_ICON)
+	
+	scripts.add_item("Run All With Debug")
+	scripts.set_item_metadata(1, {command = RUN_DIR, path = currentdir, run_in_editor = false})
+	scripts.set_item_icon(1, PLAY_DEBUG_ICON)
+	if not Engine.is_editor_hint():
+		scripts.set_item_disabled(1, true)
+	
 	var scriptlist: Array = test[currentdir]
 	if scriptlist.empty():
 		return
@@ -138,7 +162,7 @@ func _on_scripts_about_to_show(scripts) -> void:
 		method.name = idx as String
 		scripts.add_child(method, true)
 		scripts.add_submenu_item(script["path"], method.name, idx)
-		scripts.set_item_icon(idx, load("res://addons/WAT/assets/script.png"))
+		scripts.set_item_icon(idx, SCRIPT_ICON)
 		method.connect(ABOUT_TO_SHOW, self, "_on_methods_about_to_show", [method, scripts])
 		idx += 1
 	
@@ -147,6 +171,7 @@ func _on_methods_about_to_show(methods, scripts) -> void:
 	methods.clear()
 	methods.set_as_minsize()
 	methods.add_item("Run All")
+	methods.add_item("Run All With Debug")
 	var tag_editor = TagEditor.duplicate(true)
 	pool.append(tag_editor)
 	tag_editor.name = "tagEditor"
@@ -154,18 +179,26 @@ func _on_methods_about_to_show(methods, scripts) -> void:
 	methods.add_submenu_item("Edit Tags", tag_editor.name)
 	tag_editor.connect(ABOUT_TO_SHOW, self, "_on_tag_editor_about_to_show", [tag_editor, scripts])
 	var currentScript: String = scripts.get_item_text(methods.name as int)
-	methods.set_item_metadata(0, {command = RUN_SCRIPT, path = currentScript})
-	methods.set_item_metadata(1, {command = RUN_TAG, tag = "?"})
-	methods.set_item_icon(0, load("res://addons/WAT/assets/script.png"))
-	methods.set_item_icon(1, load("res://addons/WAT/assets/label.png"))
+	methods.set_item_metadata(0, {command = RUN_SCRIPT, path = currentScript, run_in_editor = true})
+	methods.set_item_metadata(1, {command = RUN_SCRIPT, path = currentScript, run_in_editor = false})
+	methods.set_item_metadata(2, {command = RUN_TAG, tag = "?"})
+	methods.set_item_icon(0, SCRIPT_ICON)
+	methods.set_item_icon(1, PLAY_DEBUG_ICON)
+	methods.set_item_icon(2, LABEL_ICON)
+	if not Engine.is_editor_hint():
+		methods.set_item_disabled(1, true)
 	var script: GDScript = test.scripts[currentScript]["script"]
 	var methodlist = script.get_script_method_list()
 	var idx: int = methods.get_item_count()
 	for method in methodlist:
 		if method.name.begins_with("test"):
 			methods.add_item(method.name)
-			methods.set_item_metadata(idx, {command = RUN_METHOD, path = script.get_path(), method = method.name})
-			methods.set_item_icon(idx, load("res://addons/WAT/assets/function.png"))
+			methods.set_item_metadata(idx, {command = RUN_METHOD, path = script.get_path(), method = method.name, run_in_editor = true})
+			methods.set_item_icon(idx, FUNCTION_ICON)
+			idx += 1
+			methods.add_item(method.name + " (Debug) ")
+			methods.set_item_metadata(idx, {command = RUN_METHOD, path = script.get_path(), method = method.name, run_in_editor = false})
+			methods.set_item_icon(idx, FUNCTION_ICON)
 			idx += 1
 	
 func _on_tags_about_to_show() -> void:
@@ -176,8 +209,12 @@ func _on_tags_about_to_show() -> void:
 	var idx: int = Tags.get_item_count()
 	for taglabel in tags:
 		Tags.add_item(taglabel)
-		Tags.set_item_metadata(idx, {command = RUN_TAG, tag = taglabel})
+		Tags.set_item_metadata(idx, {command = RUN_TAG, tag = taglabel, run_in_editor = true})
 		idx += 1
+		Tags.add_item(taglabel + " (Debug) ")
+		Tags.set_item_metadata(idx, {command = RUN_TAG, tag = taglabel, run_in_editor = false})
+		idx += 1
+		
 		
 func _on_tag_editor_about_to_show(tagEditor, scripts) -> void:
 	refresh()
@@ -325,3 +362,13 @@ func _add_test_dirs_recursively(path: String) -> void:
 		subdirs.append(title)
 	for subdir in subdirs:
 		_add_test_dirs_recursively(subdir)
+
+# Loads scaled assets like icons and fonts
+func _setup_editor_assets(assets_registry):
+	FOLDER_ICON = assets_registry.load_asset("assets/folder.png")
+	FAILED_ICON = assets_registry.load_asset("assets/failed.png")
+	SCRIPT_ICON = assets_registry.load_asset("assets/script.png")
+	PLAY_ICON = assets_registry.load_asset("assets/play.png")
+	PLAY_DEBUG_ICON = assets_registry.load_asset("assets/play_debug.png")
+	LABEL_ICON = assets_registry.load_asset("assets/label.png")
+	FUNCTION_ICON = assets_registry.load_asset("assets/function.png")

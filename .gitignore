@@ -1,3 +1,4 @@
 *.import/
 *.translation
 /Godot/tests/*.json
+/Godot/tests/results.xml
