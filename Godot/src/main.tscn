@@ -7,7 +7,7 @@
 [ext_resource path="res://src/dialogs/about_dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/dialogs/file_dialog.tscn" type="PackedScene" id=6]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -27,7 +27,7 @@ corner_radius_bottom_left = 2
 border_width_right = 1
 border_color = Color( 0.870588, 0.866667, 0.854902, 1 )
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=3]
 CheckButton/colors/font_color = Color( 0.870588, 0.866667, 0.854902, 1 )
 CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckButton/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -71,14 +71,14 @@ TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
 TooltipLabel/fonts/font = null
-TooltipPanel/styles/panel = SubResource( 3 )
+TooltipPanel/styles/panel = SubResource( 1 )
 VSeparator/constants/separation = 4
 VSeparator/styles/separator = SubResource( 2 )
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -31,6 +31,9 @@
 #--     - Added _on_ToolBar_switch_case_sensitive_button_pressed signal handler.
 #--     - Added var to store the nodes instead of using them with $path/node,
 #--         this will prevent errors if the main scene hierarchy is updated.
+#--
+#--  - 22/06/2021 Lyaaaaa
+#--     - Updated display_stats to make the displayed string more explicit.
 #------------------------------------------------------------------------------
 extends Control
 
@@ -66,7 +69,9 @@ func search_file() -> void:
 func display_stats() -> void:
     var text : String
 
-    text = String(matching_lines) + "/" + String(total_lines) + " matching lines"
+    text = String(matching_lines) + " filtered/" + String(total_lines)
+    text += " total lines"
+
     top_menu.set_text_top_right_label(text)
 
 
