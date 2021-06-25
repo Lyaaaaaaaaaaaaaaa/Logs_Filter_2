@@ -107,7 +107,8 @@ __meta__ = {
 }
 
 [node name="TopRightLabel" type="Label" parent="MarginContainer/HBoxContainer/TopRightLabels"]
-margin_left = 167.0
+margin_left = 107.0
 margin_top = 7.0
-margin_right = 167.0
+margin_right = 227.0
 margin_bottom = 21.0
+text = "Filtered/Total lines"
