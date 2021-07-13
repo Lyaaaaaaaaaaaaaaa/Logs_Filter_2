@@ -1,37 +1,52 @@
-## Welcome to GitHub Pages
+# Logs Filter 2
 
-You can use the [editor on GitHub](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Features
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- **Efficiently search through logs** - ctrl+f isn't efficient for big files
+- **Start by casting a wide net** - By setting `Search for all filters` to off
+ you can fetch all the lines where at least one filter appears.
+- **Sharpen your search** - By setting `Search for all filters` to on you can
+ fetch the lines where all your filters appear.
+- **Disable/Enable case sensitivity**
+- **See in real time the statistics of your search** - The number of lines 
+searched and the number of lines matching your filters is displayed in the top
+right-hand corner of the application.
 
-### Markdown
+## Preview
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![](images/demo.gif)
 
-```markdown
-Syntax highlighted code block
+## Why would you use Logs Filter 2 instead of CRTL+F?
 
-# Header 1
-## Header 2
-### Header 3
+It is more efficient and more readable for sizeable files. Ctrl+f is limited when you need a clear and readable output. Moreover, this project accepts multiple filters. Not everyone has knowledge in Linux/Windows terminal. The software comes with a simple interface.
 
-- Bulleted
-- List
+## [Download](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/releases)
 
-1. Numbered
-2. List
+### Installation
 
-**Bold** and _Italic_ and `Code` text
+1. Download the [lastest version](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/releases/latest) of the software (Supports Linux, Windows and MacOS)
+2. Extract the zip
+3. Run the application.
 
-[Link](url) and ![Image](src)
-```
+---
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Contact and support 
 
-### Jekyll Themes
+### Contact
+You can get in touch with me on Discord.
+You just have to join my [server](https://discord.gg/hSey9Bv).
+If you are old school, you can send me a mail at lyaaaaaaaaaaaaaaa@protonmail.com.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Support
 
-### Support or Contact
+### Contributions
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+If you want to contribute to my project read the [How to contribute](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CONTRIBUTING.md).
+
+### Suggestions
+
+If you want to suggest features, create a discussion in [here](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/discussions).
+
+### Report errors
+
+If you need to report a bug make sure you read the [Code of conduct](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CODE_OF_CONDUCT.md) before opening an issue [here](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/issues)
