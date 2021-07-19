@@ -34,6 +34,18 @@
 #--
 #--  - 22/06/2021 Lyaaaaa
 #--     - Updated display_stats to make the displayed string more explicit.
+#--
+#--  - 19/07/2021 Lyaaaaa
+#--     - Added _on_ToolBar_display_all_button_pressed function
+#--     - Renamed _on_ToolBar_start_button_pressed into
+#--         _on_ToolBar_search_button_pressed.
+#--     - Extracted file.seek(0) from _on_ToolBar_search_button_pressed to
+#--         search_file. Replace the magic number 0 by a variable set to 0.
+#--     - Updated search_file.
+#--       - Added a parameter p_display_all, default value is false.
+#--       - Used this parameter to parse the file when set to false.
+#--       - Used this parameter to not parse the file, therefore display all of
+#--           its content.
 #------------------------------------------------------------------------------
 extends Control
 
@@ -50,17 +62,24 @@ onready var output_display = find_node("OutputDisplay")
 onready var about_dialog = find_node("AboutDialog")
 onready var file_dialog  = find_node("FileDialog")
 
-func search_file() -> void:
+func search_file(p_display_all : bool = false) -> void:
     var line : String
+    var position_file_cursor : int = 0
 
+    file.seek(position_file_cursor)
     tool_bar.disable_buttons()
+
     while file.eof_reached() == false:
         total_lines += 1
         line = file.get_line()
 
-        if parser.search_line(line) == true:
+        if p_display_all == false and parser.search_line(line) == true:
             matching_lines += 1
             display_line(line)
+
+        elif p_display_all == true:
+            display_line(line)
+            matching_lines += 1
 
     display_stats()
     tool_bar.enable_buttons()
@@ -84,12 +103,11 @@ func reset_counters() -> void:
     total_lines    = 0
 
 
-func _on_ToolBar_start_button_pressed(p_filters : Array) -> void:
+func _on_ToolBar_search_button_pressed(p_filters : Array) -> void:
     reset_counters()
     output_display.clear()
     parser.set_filters(p_filters)
 
-    file.seek(0)
     search_file()
 
 
@@ -114,3 +132,11 @@ func _on_TopMenu_open_file_button_pressed() -> void:
 
 func _on_TopMenu_about_button_pressed() -> void:
     about_dialog.popup_centered()
+
+
+func _on_ToolBar_display_all_button_pressed() -> void:
+    var display_all : bool = true
+
+    reset_counters()
+    output_display.clear()
+    search_file(display_all)
