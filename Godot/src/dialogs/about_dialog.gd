@@ -13,7 +13,7 @@ extends WindowDialog
 
 
 func _on_WebSiteButton_pressed() -> void:
-    OS.shell_open("https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2")
+    OS.shell_open("https://lyaaaaaaaaaaaaaaa.github.io/Logs_Filter_2/")
 
 
 func _on_DiscordButton_pressed():
