@@ -129,7 +129,8 @@ visible = false
 
 [connection signal="about_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_about_button_pressed"]
 [connection signal="open_file_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_open_file_button_pressed"]
-[connection signal="start_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_start_button_pressed"]
+[connection signal="display_all_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_display_all_button_pressed"]
+[connection signal="search_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_search_button_pressed"]
 [connection signal="switch_case_sensitive_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_switch_case_sensitive_button_pressed"]
 [connection signal="switch_mode_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_switch_mode_button_pressed"]
 [connection signal="file_selected" from="Dialogs/FileDialog" to="." method="_on_FileDialog_file_selected"]
