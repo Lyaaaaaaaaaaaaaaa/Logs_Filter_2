@@ -92,6 +92,7 @@ grow_horizontal = 2
 hint_tooltip = "Shortcut: ENTER"
 mouse_default_cursor_shape = 2
 disabled = true
+shortcut_in_tooltip = false
 shortcut = SubResource( 3 )
 text = "Search"
 
@@ -135,6 +136,7 @@ Shortcut: M"
 mouse_default_cursor_shape = 2
 theme = SubResource( 4 )
 disabled = true
+shortcut_in_tooltip = false
 pressed = true
 shortcut = SubResource( 6 )
 text = "Search for all filters"
@@ -146,6 +148,7 @@ margin_bottom = 40.0
 hint_tooltip = "Shortcut: C"
 mouse_default_cursor_shape = 2
 disabled = true
+shortcut_in_tooltip = false
 shortcut = SubResource( 8 )
 text = "Case sensitive"
 
