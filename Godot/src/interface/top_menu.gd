@@ -8,12 +8,18 @@
 #-- Changelog:
 #--  - 28/04/2021 Lyaaaaa
 #--     - Created the file.
+#--
+#--  - 22/07/2021 Lyaaaaa
+#--     - Added a signal `preferences_button_pressed` and a condition in 
+#--         _on_open_file_popup_menu_pressed to emit it if you select the item
+#--         number 1.
 #------------------------------------------------------------------------------
 
 extends Panel
 
 signal open_file_button_pressed
 signal about_button_pressed
+signal preferences_button_pressed
 
 var _file_button : MenuButton
 var _help_button : MenuButton
@@ -51,6 +57,10 @@ func _register_handlers() -> void:
 func _on_open_file_popup_menu_pressed(p_id : int) -> void:
     if p_id == 0:
         emit_signal("open_file_button_pressed")
+        
+    elif p_id == 1:
+        emit_signal("preferences_button_pressed")
+
 
 func _on_help_popup_menu_pressed(p_id : int) -> void:
     if p_id == 0:

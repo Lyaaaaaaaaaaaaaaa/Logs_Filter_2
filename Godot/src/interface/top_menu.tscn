@@ -51,7 +51,7 @@ margin_right = 35.0
 margin_bottom = 28.0
 mouse_default_cursor_shape = 2
 text = "File"
-items = [ "Open file...", null, 0, false, false, 0, 0, null, "", false ]
+items = [ "Open file...", null, 0, false, false, 0, 0, null, "", false, "Preferences", null, 0, false, false, 1, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="HelpButton" type="MenuButton" parent="MarginContainer/HBoxContainer/MenuItems"]
