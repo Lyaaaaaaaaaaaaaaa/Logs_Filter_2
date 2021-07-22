@@ -6,6 +6,10 @@ This project is a lightweight user-friendly software which filters logs.
 
 **This is a re-write of my previous project** [Lyaaaaa's Logs Filter](https://github.com/Lyaaaaaaaaaaaaaaa/Lyaaaaa-s-Logs-Filter). This aims at being more portable, faster and easier to maintain. 
 
+## Looking for help!
+**I'm looking for contributors to improve the GUI**. If you are interested in contributing read the [How to contribute](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CONTRIBUTING.md). If you have any question feel free to [contact me](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CONTRIBUTING.md#how-can-you-get-in-touch-with-me).
+Other contributions are welcome as well.
+
 ## Functionalities 
 
 - **Efficiently search through logs** - ctrl+f isn't efficient for big files
