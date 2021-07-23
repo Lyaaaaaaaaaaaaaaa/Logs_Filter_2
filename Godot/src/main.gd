@@ -46,6 +46,10 @@
 #--       - Used this parameter to parse the file when set to false.
 #--       - Used this parameter to not parse the file, therefore display all of
 #--           its content.
+#--
+#--  - 23/07/2021 Lyaaaaa
+#--     - Added preferences_dialog variable.
+#--     - Added _on_TopMenu_preferences_button_pressed.
 #------------------------------------------------------------------------------
 extends Control
 
@@ -59,8 +63,10 @@ onready var top_menu       = find_node("TopMenu")
 onready var tool_bar       = find_node("ToolBar")
 onready var output_display = find_node("OutputDisplay")
 
-onready var about_dialog = find_node("AboutDialog")
-onready var file_dialog  = find_node("FileDialog")
+onready var about_dialog       = find_node("AboutDialog")
+onready var file_dialog        = find_node("FileDialog")
+onready var preferences_dialog = find_node("PreferencesDialog")
+
 
 func search_file(p_display_all : bool = false) -> void:
     var line : String
@@ -140,3 +146,7 @@ func _on_ToolBar_display_all_button_pressed() -> void:
     reset_counters()
     output_display.clear()
     search_file(display_all)
+
+
+func _on_TopMenu_preferences_button_pressed():
+    preferences_dialog.popup_centered()
