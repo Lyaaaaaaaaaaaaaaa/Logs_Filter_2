@@ -6,6 +6,10 @@ This project is a lightweight user-friendly software which filters logs.
 
 **This is a re-write of my previous project** [Lyaaaaa's Logs Filter](https://github.com/Lyaaaaaaaaaaaaaaa/Lyaaaaa-s-Logs-Filter). This aims at being more portable, faster and easier to maintain. 
 
+## Looking for help!
+**I'm looking for contributors to improve the GUI**. If you are interested in contributing read the [How to contribute](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CONTRIBUTING.md). If you have any question feel free to [contact me](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/blob/Master/management/CONTRIBUTING.md#how-can-you-get-in-touch-with-me).
+Other contributions are welcome as well.
+
 ## Functionalities 
 
 - **Efficiently search through logs** - ctrl+f isn't efficient for big files
@@ -17,6 +21,11 @@ This project is a lightweight user-friendly software which filters logs.
 - **See in real time the statistics of your search** - The number of lines 
 searched and the number of lines matching your filters are displayed in the top
 right-hand corner of the application.
+- **Copy to the clipboard** - In one click you can copy the whole output into your
+clipboard.
+- **Saved preferences** - You can change the size, style or color of the font 
+and more.
+
 
 ## Why is this project useful?
 It is more efficient and more readable for sizeable files. Ctrl+f is limited when you need a clear and readable output. Moreover, this project accepts multiple filters. Not everyone has knowledge in Linux/Windows terminal. The software comes with a simple interface.

@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/interface/output_display.gd" type="Script" id=1]
+[ext_resource path="res://assets/clipboard.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/DejaVuSansMono.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="Theme" id=1]
 
@@ -12,6 +14,10 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+font_data = ExtResource( 3 )
 
 [node name="OutputDisplay" type="Panel"]
 anchor_right = 1.0
@@ -40,6 +46,7 @@ margin_top = 10.0
 margin_right = 1024.0
 margin_bottom = 595.0
 focus_mode = 2
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0.870588, 0.866667, 0.854902, 1 )
 custom_colors/selection_color = Color( 0.101961, 0.372549, 0.705882, 1 )
 custom_constants/line_separation = 7
@@ -48,3 +55,21 @@ selection_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ClipboardButton" type="Button" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -74.0
+margin_top = 4.0
+margin_right = -12.0
+margin_bottom = 60.0
+hint_tooltip = "Save to clipboard"
+mouse_default_cursor_shape = 2
+icon = ExtResource( 2 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ClipboardButton" to="." method="_on_ClipboardButton_pressed"]

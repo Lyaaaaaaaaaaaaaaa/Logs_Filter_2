@@ -22,15 +22,17 @@ Variables     : `variable_name`
 
 Parameters    : `p_parameter_name`
 
-Classes       : `name_name`
+Classes       : `Name_Name`
 
-Objects       : `Name_Name`
+Objects       : `name_name`
 
 Functions     : `name_name`
 
 Signals       : `action` *example: `shot_fired` use past*
 
-Signals Handlers : `on_<NodeName>_action` *example: `on_AllyShip_fired`*
+Signals Handlers : `on_<NodeName>_action` *example:* `on_AllyShip_fired`
+
+Enum : `Name` *example:* `Jobs`
 
 ## File's header
 
@@ -40,9 +42,11 @@ Signals Handlers : `on_<NodeName>_action` *example: `on_AllyShip_fired`*
 #--
 #-- Author : xxx
 #--
-#-- Portability Issues:
+#-- Portability Issues (feel free to remove this part if there is none):
 #--  - xxx
 #-- Implementation Notes:
+#--  - 
+#-- Anticipated changes:
 #--  - 
 #-- Changelog:
 #--  - dd/mm/YYYY author
