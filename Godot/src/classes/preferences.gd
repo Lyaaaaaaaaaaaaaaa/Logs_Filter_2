@@ -19,6 +19,11 @@
 #--
 #--  - 23/07/2021 Lyaaaaa
 #--    - Finished implementing it.
+#--
+#--  - 26/07/2021 Lyaaaaa
+#--    - Deleted a comment from the save function.
+#--    - file and file_path are not named _file and _file_path to "declare" them
+#--        as protected variables.
 #------------------------------------------------------------------------------
 class_name Preferences
 extends Object
@@ -33,22 +38,21 @@ var output_display = {
     "selection_color" : Color("#1a5fb4")
 }
 
-var file      := File.new()
-var file_path := "user://preferences"
+var _file      := File.new()
+var _file_path := "user://preferences"
 
 func _init() -> void:
-    if file.file_exists(file_path):
+    if _file.file_exists(_file_path):
         self.load()
 
 
 func save() -> void:
-# The order in which the variables are stored matters!
-    file.open(file_path, File.WRITE)
-    file.store_var(output_display)
-    file.close()
+    _file.open(_file_path, File.WRITE)
+    _file.store_var(output_display)
+    _file.close()
 
 
 func load() -> void:
-    file.open(file_path, File.READ)
-    output_display = file.get_var()
-    file.close()
+    _file.open(_file_path, File.READ)
+    output_display = _file.get_var()
+    _file.close()

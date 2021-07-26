@@ -83,7 +83,7 @@ margin_bottom = 50.0
 [node name="VersionLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
 margin_right = 279.0
 margin_bottom = 14.0
-text = "Version : 1.0.0"
+text = "Version : 1.1.0"
 align = 1
 
 [node name="LicenseLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
