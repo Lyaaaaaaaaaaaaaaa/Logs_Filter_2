@@ -11,6 +11,10 @@
 - **See in real time the statistics of your search** - The number of lines 
 searched and the number of lines matching your filters is displayed in the top
 right-hand corner of the application.
+- **Copy to the clipboard** - In one click you can copy the whole output into your
+clipboard.
+- **Saved preferences** - You can change the size, style or color of the font 
+and more.
 
 ## Preview
 
