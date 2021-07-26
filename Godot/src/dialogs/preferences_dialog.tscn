@@ -1,0 +1,168 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/dialogs/preferences_dialog.gd" type="Script" id=1]
+
+[node name="PreferencesDialog" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -512.0
+margin_bottom = -300.0
+window_title = "Preferences"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 0, 270 )
+hint_tooltip = "Hover the options name to see display its tooltip."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+margin_left = 130.0
+margin_top = 71.0
+margin_right = 382.0
+margin_bottom = 199.0
+
+[node name="LabelsContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 98.0
+margin_bottom = 128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineSeparationLabel" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/LabelsContainer"]
+margin_right = 98.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+text = "Line separation"
+valign = 1
+
+[node name="FontLabel" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/LabelsContainer"]
+margin_top = 28.0
+margin_right = 98.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 24 )
+text = "Font"
+valign = 1
+
+[node name="FontSizeLabel" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/LabelsContainer"]
+margin_top = 56.0
+margin_right = 98.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 24 )
+text = "Font size"
+valign = 1
+
+[node name="FontColorLabel" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/LabelsContainer"]
+margin_top = 84.0
+margin_right = 98.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 20 )
+text = "Font color"
+valign = 1
+
+[node name="SelectionColorLabel" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/LabelsContainer"]
+margin_top = 108.0
+margin_right = 98.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 20 )
+text = "Selection color"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputsContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 102.0
+margin_right = 252.0
+margin_bottom = 128.0
+
+[node name="LineSeparationSpinBox" type="SpinBox" parent="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer"]
+margin_right = 75.0
+margin_bottom = 24.0
+hint_tooltip = "The vertical space between lines."
+min_value = -7.0
+max_value = 20.0
+value = 7.0
+rounded = true
+
+[node name="FontItemList" type="ItemList" parent="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer"]
+margin_top = 28.0
+margin_right = 150.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 150, 24 )
+hint_tooltip = "Select the font of the displayed logs."
+items = [ "DejaVuSansMono", null, false, "DejaVuSansMono-Bold", null, false, "LiberationMono-Bold", null, false, "LiberationMono-Regular", null, false, "LiberationSans-Bold", null, false, "LiberationSans-Regular", null, false ]
+
+[node name="FontSizeSpinBox" type="SpinBox" parent="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer"]
+margin_top = 56.0
+margin_right = 75.0
+margin_bottom = 80.0
+hint_tooltip = "The size of the selected font"
+max_value = 30.0
+value = 14.0
+
+[node name="FontColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer"]
+margin_top = 84.0
+margin_right = 75.0
+margin_bottom = 104.0
+hint_tooltip = "The color of the displayed logs."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer"]
+margin_top = 108.0
+margin_right = 75.0
+margin_bottom = 128.0
+hint_tooltip = "The color of the selection box."
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 274.0
+margin_right = 512.0
+margin_bottom = 294.0
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer2"]
+margin_left = 210.0
+margin_right = 302.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/CenterContainer2/ButtonContainer"]
+margin_right = 41.0
+margin_bottom = 20.0
+hint_tooltip = "Saves the modification."
+text = "Save"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/CenterContainer2/ButtonContainer"]
+margin_left = 45.0
+margin_right = 92.0
+margin_bottom = 20.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer/LineSeparationSpinBox" to="." method="_on_LineSeparationSpinBox_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer/FontItemList" to="." method="_on_FontItemList_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer/FontSizeSpinBox" to="." method="_on_FontSizeSpinBox_value_changed"]
+[connection signal="color_changed" from="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer/FontColorPickerButton" to="." method="_on_FontColorPickerButton_color_changed"]
+[connection signal="color_changed" from="VBoxContainer/CenterContainer/HBoxContainer/InputsContainer/SelectionColorPickerButton" to="." method="_on_SelectionColorPickerButton_color_changed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/ButtonContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/ButtonContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

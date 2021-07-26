@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/interface/top_menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/tool_bar.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/interface/output_display.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/dialogs/about_dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/dialogs/file_dialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/dialogs/preferences_dialog.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 5.0
@@ -127,10 +128,19 @@ visible = false
 
 [node name="FileDialog" parent="Dialogs" instance=ExtResource( 6 )]
 
+[node name="PreferencesDialog" parent="Dialogs" instance=ExtResource( 7 )]
+
 [connection signal="about_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_about_button_pressed"]
 [connection signal="open_file_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_open_file_button_pressed"]
+[connection signal="preferences_button_pressed" from="VBoxContainer/TopMenu" to="." method="_on_TopMenu_preferences_button_pressed"]
 [connection signal="display_all_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_display_all_button_pressed"]
 [connection signal="search_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_search_button_pressed"]
 [connection signal="switch_case_sensitive_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_switch_case_sensitive_button_pressed"]
 [connection signal="switch_mode_button_pressed" from="VBoxContainer/ToolBar" to="." method="_on_ToolBar_switch_mode_button_pressed"]
 [connection signal="file_selected" from="Dialogs/FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="font_changed" from="Dialogs/PreferencesDialog" to="VBoxContainer/OutputDisplay" method="_on_PreferencesDialog_font_changed"]
+[connection signal="font_color_changed" from="Dialogs/PreferencesDialog" to="VBoxContainer/OutputDisplay" method="_on_PreferencesDialog_font_color_changed"]
+[connection signal="font_size_changed" from="Dialogs/PreferencesDialog" to="VBoxContainer/OutputDisplay" method="_on_PreferencesDialog_font_size_changed"]
+[connection signal="left_margin_changed" from="Dialogs/PreferencesDialog" to="VBoxContainer/OutputDisplay" method="_on_PreferencesDialog_left_margin_changed"]
+[connection signal="line_separation_changed" from="Dialogs/PreferencesDialog" to="VBoxContainer/OutputDisplay" method="_on_PreferencesDialog_line_separation_changed"]
+[connection signal="selection_color_changed" from="Dialogs/PreferencesDialog" to="VBoxContainer/OutputDisplay" method="_on_PreferencesDialog_selection_color_changed"]
