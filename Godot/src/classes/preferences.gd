@@ -19,6 +19,9 @@
 #--
 #--  - 23/07/2021 Lyaaaaa
 #--    - Finished implementing it.
+#--
+#--  - 26/07/2021 Lyaaaaa
+#--    - Deleted a comment from the save function.
 #------------------------------------------------------------------------------
 class_name Preferences
 extends Object
@@ -42,7 +45,6 @@ func _init() -> void:
 
 
 func save() -> void:
-# The order in which the variables are stored matters!
     file.open(file_path, File.WRITE)
     file.store_var(output_display)
     file.close()
