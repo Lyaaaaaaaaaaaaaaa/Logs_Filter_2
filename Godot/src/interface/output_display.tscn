@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/interface/output_display.gd" type="Script" id=1]
 [ext_resource path="res://assets/clipboard.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/DejaVuSansMono.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/plus.png" type="Texture" id=4]
+[ext_resource path="res://assets/minus.png" type="Texture" id=5]
 
 [sub_resource type="Theme" id=1]
 
@@ -56,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClipboardButton" type="Button" parent="."]
+[node name="ButtonsContainer" type="HBoxContainer" parent="."]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -64,6 +66,38 @@ margin_left = -74.0
 margin_top = 4.0
 margin_right = -12.0
 margin_bottom = 60.0
+grow_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlusButton" type="Button" parent="ButtonsContainer"]
+margin_right = 60.0
+margin_bottom = 66.0
+hint_tooltip = "Increase font size."
+mouse_default_cursor_shape = 2
+icon = ExtResource( 4 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinusButton" type="Button" parent="ButtonsContainer"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 66.0
+hint_tooltip = "Decrease font size."
+mouse_default_cursor_shape = 2
+icon = ExtResource( 5 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClipboardButton" type="Button" parent="ButtonsContainer"]
+margin_left = 128.0
+margin_right = 190.0
+margin_bottom = 66.0
 hint_tooltip = "Save to clipboard"
 mouse_default_cursor_shape = 2
 icon = ExtResource( 2 )
@@ -72,4 +106,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="ClipboardButton" to="." method="_on_ClipboardButton_pressed"]
+[connection signal="pressed" from="ButtonsContainer/PlusButton" to="." method="_on_PlusButton_pressed"]
+[connection signal="pressed" from="ButtonsContainer/MinusButton" to="." method="_on_MinusButton_pressed"]
+[connection signal="pressed" from="ButtonsContainer/ClipboardButton" to="." method="_on_ClipboardButton_pressed"]
