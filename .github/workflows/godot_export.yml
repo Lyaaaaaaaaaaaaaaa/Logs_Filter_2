@@ -32,7 +32,7 @@ jobs:
           archive_export_output               : true
           base_version                        : 1.2.0
           create_release                      : true
-          generate_release_notes              : true
+          generate_release_notes              : false
           relative_export_path                : ./releases/
           #Set export_debug : true for test branches only
           export_debug                        : false
