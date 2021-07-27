@@ -1,0 +1,18 @@
+                                                              time
+Logs Filter 2:                                                  33 min
+Logs Filter 2: Create the ToolBar scene                         16 min
+Logs Filter 2: Create the output_display scene                  10 min
+Logs Filter 2: Created AboutDialog scene                        28 min
+Logs Filter 2: Created FileDialog scene                         6 min
+Logs Filter 2: Design main scene                                51 min
+Logs Filter 2: Implement main.gd                                1 hour 45 min
+Logs Filter 2: Implement output_display.gd                      14 min
+Logs Filter 2: Implement possibility to turn on/off case sensitivity  1 hour 15 min
+Logs Filter 2: Implement tool_bar.gd                            27 min
+Logs Filter 2: Implemented about_dialog.gd                      2 min
+Logs Filter 2: Re design AboutDialog                            30 min
+
+Total work done this month: 6 hours 59 min
+
+By category:
+Logs Filter 2                                                   6 hours 37 min

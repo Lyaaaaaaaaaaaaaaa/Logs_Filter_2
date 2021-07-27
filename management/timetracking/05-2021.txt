@@ -1,0 +1,10 @@
+                                                              time
+Logs Filter 2: Create a theme                                   2 hours 19 min
+Logs Filter 2: DevOps                                           1 hour 1 min
+Logs Filter 2: Implementing unit testing                        1 hour 26 min
+
+Total work done this month: 4 hours 46 min
+
+By category:
+Logs Filter 2                                                   4 hours 46 min
+
