@@ -5,6 +5,10 @@
 #--
 #-- Implementation Notes:
 #--  -
+#--
+#-- Anticipated changes:
+#--  - Update _on_files_dropped to open a tab for each file.
+#--
 #-- Changelog:
 #--  - 27/04/2021 Lyaaaaa
 #--     - Created the empty file.
@@ -50,6 +54,14 @@
 #--  - 23/07/2021 Lyaaaaa
 #--     - Added preferences_dialog variable.
 #--     - Added _on_TopMenu_preferences_button_pressed.
+#--
+#--  - 27/07/2021 Lyaaaaa
+#--     - Added _ready function. It connects the signal "files_dropped" to
+#--         _on_files_dropped.
+#--     - Added _on_files_dropped function which calls open_file.
+#--     - Added open_file function.
+#--     - Updated _on_FileDialog_file_selected to call open_file.
+#--     - Declared _on_TopMenu_preferences_button_pressed return type is void.
 #------------------------------------------------------------------------------
 extends Control
 
@@ -67,6 +79,8 @@ onready var about_dialog       = find_node("AboutDialog")
 onready var file_dialog        = find_node("FileDialog")
 onready var preferences_dialog = find_node("PreferencesDialog")
 
+func _ready():
+    get_tree().connect("files_dropped", self, "_on_files_dropped")
 
 func search_file(p_display_all : bool = false) -> void:
     var line : String
@@ -109,6 +123,13 @@ func reset_counters() -> void:
     total_lines    = 0
 
 
+func open_file(p_path : String) -> void:
+    tool_bar.enable_buttons()
+    top_menu.set_text_top_label(p_path)
+
+    file.open(p_path, File.READ)
+
+
 func _on_ToolBar_search_button_pressed(p_filters : Array) -> void:
     reset_counters()
     output_display.clear()
@@ -126,10 +147,7 @@ func _on_ToolBar_switch_case_sensitive_button_pressed() -> void:
 
 
 func _on_FileDialog_file_selected(p_path : String) -> void:
-    tool_bar.enable_buttons()
-    top_menu.set_text_top_label(p_path)
-
-    file.open(p_path, File.READ)
+    open_file(p_path)
 
 
 func _on_TopMenu_open_file_button_pressed() -> void:
@@ -148,5 +166,9 @@ func _on_ToolBar_display_all_button_pressed() -> void:
     search_file(display_all)
 
 
-func _on_TopMenu_preferences_button_pressed():
+func _on_TopMenu_preferences_button_pressed() -> void:
     preferences_dialog.popup_centered()
+
+
+func _on_files_dropped(p_files : Array, p_screen : int) -> void:
+    open_file(p_files[0])
