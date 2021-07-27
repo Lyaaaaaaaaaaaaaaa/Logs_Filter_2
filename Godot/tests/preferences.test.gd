@@ -12,6 +12,13 @@
 #-- Changelog:
 #--  - 26/07/2021 Lyaaaaa
 #--    - Created the file.
+#--
+#--  - 27/07/2021
+#--    - Fixed some errors
+#--      - Renamed file_path into _file_path
+#--      - Updated post to delete the saved file between two functions.
+#--    - Deleted the lines changing the file_path. No need to use a specific 
+#--        path to test.
 #------------------------------------------------------------------------------
 
 extends WAT.Test
@@ -22,10 +29,11 @@ var context     : String
 
 func pre() -> void:
     preferences = Preferences.new()
-    preferences.file_path = "user://test"
 
 
 func post() -> void:
+    var directory = Directory.new()
+    directory.remove(preferences._file_path)
     preferences.free()
     context = ""
 
@@ -41,8 +49,8 @@ func test_save() -> void:
     old_value = preferences.output_display["font"]
     preferences.output_display["font"] = "Test"
     preferences.save()
-
-    file.open(preferences.file_path, File.READ)
+    
+    file.open(preferences._file_path, File.READ)
 
     output_display = file.get_var()
     new_value      = output_display["font"]
@@ -60,8 +68,7 @@ func test_load() -> void:
     preferences.save()
     preferences.free()
 
-    preferences           = Preferences.new()
-    preferences.file_path = "user://test"
+    preferences = Preferences.new()
     preferences.load()
 
     output_display = preferences.output_display

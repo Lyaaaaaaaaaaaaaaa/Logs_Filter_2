@@ -61,6 +61,7 @@
 #--     - Added _on_files_dropped function which calls open_file.
 #--     - Added open_file function.
 #--     - Updated _on_FileDialog_file_selected to call open_file.
+#--     - Declared _on_TopMenu_preferences_button_pressed return type is void.
 #------------------------------------------------------------------------------
 extends Control
 
@@ -165,7 +166,7 @@ func _on_ToolBar_display_all_button_pressed() -> void:
     search_file(display_all)
 
 
-func _on_TopMenu_preferences_button_pressed():
+func _on_TopMenu_preferences_button_pressed() -> void:
     preferences_dialog.popup_centered()
 
 
