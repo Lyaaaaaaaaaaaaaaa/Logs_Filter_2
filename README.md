@@ -25,6 +25,7 @@ right-hand corner of the application.
 clipboard.
 - **Saved preferences** - You can change the size, style or color of the font 
 and more.
+- **Drag and drop** - Don't waste time! Drag your log file directly into the software.
 
 
 ## Why is this project useful?
