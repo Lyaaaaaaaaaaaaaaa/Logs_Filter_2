@@ -1,0 +1,22 @@
+                                                              time
+Logs Filter 2:                                                  15 min
+Logs Filter 2: Add buttons to decrease and increase font size   29 min
+Logs Filter 2: Deployed the update                              12 min
+Logs Filter 2: Fixed preferences unit test                      26 min
+Logs Filter 2: Fixed the position of the clipboard button       6 min
+Logs Filter 2: Implement drag&drop file                         6 min
+Logs Filter 2: Implement preferences                            2 hours 45 min
+Logs Filter 2: Implement preferences class                      42 min
+Logs Filter 2: Implement preferences menu                       1 hour 10 min
+Logs Filter 2: Implement preferences script                     2 hours 2 min
+Logs Filter 2: Implement tabs                                   19 min
+Logs Filter 2: Implemented unit testing for Preferences         58 min
+Logs Filter 2: Updated the about dialog                         5 min
+Logs Filter 2: Updating the documentation                       35 min
+
+Total work done this month: 10 hours 10 min
+
+By category:
+
+Logs Filter 2                                                   10 hours 10 min
+
