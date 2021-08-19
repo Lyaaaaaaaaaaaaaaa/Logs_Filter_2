@@ -25,13 +25,17 @@ and more.
 
 It is more efficient and more readable for sizeable files. Ctrl+f is limited when you need a clear and readable output. Moreover, this project accepts multiple filters. Not everyone has knowledge in Linux/Windows terminal. The software comes with a simple interface.
 
-## [Download](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/releases)
+## Download
+
+<iframe src="https://itch.io/embed/1163538?bg_color=252525&amp;fg_color=e8e8e8&amp;link_color=FFEB9B&amp;border_color=5d5d5d" width="552" height="167" frameborder="0"><a href="https://lyaaaaaaaaaaaaaaa.itch.io/logs-filter-2">Logs Filter 2 by Lyaaaaaaaaaaaaaaa</a></iframe>
 
 ### Installation
 
-1. Download the [lastest version](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/releases/latest) of the software (Supports Linux, Windows and MacOS)
-2. Extract the zip
-3. Run the application.
+1. Download the lastest version (Supports Linux, Windows and MacOS)
+   - On [Itch.io](https://lyaaaaaaaaaaaaaaa.itch.io/logs-filter-2)
+   - On [GitHub](https://github.com/Lyaaaaaaaaaaaaaaa/Logs_Filter_2/releases/latest)
+3. Extract the zip
+4. Run the application.
 
 ---
 
